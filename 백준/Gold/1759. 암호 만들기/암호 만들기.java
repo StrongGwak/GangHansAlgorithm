@@ -7,7 +7,6 @@ import static java.lang.Integer.parseInt;
 
 public class Main {
 	static int L, C;
-	static boolean[] visited;
 	static String[] str, password;
 	static StringBuilder sb;
 	public static void main(String[] args) throws IOException {
@@ -26,8 +25,6 @@ public class Main {
 		}
 		// 문자 정렬
 		Arrays.sort(str);
-		// 방문여부체크
-		visited = new boolean[C];
 		// 비밀번호 배열
 		password = new String[L];
 		permutation(0,0);
@@ -62,17 +59,10 @@ public class Main {
 		}
 		
 		for(int i = start; i < C; i++) {
-			//방문 안했으면
-			if(!visited[i]) {
-				// 방문 체크
-				visited[i] = true;
-				// 비밀번호에 문자 할당
-				password[cnt] = str[i];
-				// 재귀
-				permutation(cnt+1, i + 1);
-				// 방문 체크 false
-				visited[i] = false;
-			}
+			// 비밀번호에 문자 할당
+			password[cnt] = str[i];
+			// 재귀
+			permutation(cnt+1, i + 1);
 		}
 	}
 }
