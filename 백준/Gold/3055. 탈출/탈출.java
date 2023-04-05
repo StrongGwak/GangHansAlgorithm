@@ -8,7 +8,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int R, C, water[][], cave[], hg[], m[][], mn;
+	static int R, C, cave[], hg[], m[][], mn;
 	static int[] dx = {0, 1, 0, -1};
 	static int[] dy = {1, 0, -1, 0};
 	static String map[][];
@@ -16,16 +16,20 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
+		// 열
 		R = parseInt(st.nextToken());
+		// 행
 		C = parseInt(st.nextToken());
-		water = new int[R][C];
 		map = new String[R][C];
 		visited = new boolean[R][C];
 		for(int i = 0; i < R; i++) {
 			map[i] = br.readLine().split("");
 		}
+		// 굴 위치
 		cave = new int[2];
+		// 고슴도치 위치
 		hg = new int[2];
+		// 물이 시작되는곳 위치
 		m = new int[R*C][2];
 		for(int i = 0; i < R; i++) {
 			for(int j = 0; j < C; j++) {
@@ -54,14 +58,17 @@ public class Main {
 	
 	public static int hide() {
 		Queue<int[]> q = new ArrayDeque<>();
+		// 물 먼저 이동
 		for(int i = 0; i < mn; i++) {
 			q.add(new int[] {m[i][0], m[i][1], 0, 0});
 			visited[m[i][0]][m[i][1]] = true;			
 		}
+		// 고슴도치 이동
 		q.add(new int[] {hg[0], hg[1], 0, 1});
 		visited[hg[0]][hg[1]] = true;
 		while(!q.isEmpty()) {
 			int[] location = q.poll();
+			// 고슴도치가 굴에 도착했다면 시간 반환
 			if(location[3] == 1  && location[0] == cave[0] && location[1] == cave[1]) {
 				return location[2];
 			}
@@ -69,6 +76,7 @@ public class Main {
 				int mx = location[0] + dx[i];
 				int my = location[1] + dy[i];
 				if(mx >= 0 && mx < R && my >= 0 && my < C && !visited[mx][my] && !map[mx][my].equals("X")) {
+					// 물은 굴에 가도 아무일없음
 					if(location[3] == 0 && map[mx][my].equals("D")) {
 						
 					} else {
@@ -79,6 +87,7 @@ public class Main {
 				}
 			}
 		}
+		// 굴에 못가면 -1 반환
 		return -1;
 	}
 }
