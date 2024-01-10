@@ -11,10 +11,8 @@ bool desc(int a, int b){
 int solution(int k, int m, vector<int> score) {
     int answer = 0;
     sort(score.begin(), score.end(), desc);
-    for (int i = 0; i < score.size(); i++) {
-        if ((i + 1) % m == 0) {
-            answer += score[i] * m;
-        }
+    for (int i = m - 1; i < score.size(); i = i + m) {
+        answer += score[i] * m;
     }
     return answer;
 }
