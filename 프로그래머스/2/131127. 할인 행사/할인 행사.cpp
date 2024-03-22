@@ -1,20 +1,16 @@
 #include <string>
 #include <vector>
 #include <map>
-#include <iostream>
 
 using namespace std;
 
-int check(vector<bool> end, int w) {
+bool check(vector<bool> end) {
     for (int i = 0; i < end.size(); i++) {
-        if (end[i]) {
-            w--;
+        if (!end[i]) {
+            return false;
         }
     }
-    if (w == 0) {
-        return 1;
-    }
-    return 0;
+    return true;
 }
 
 int solution(vector<string> want, vector<int> number, vector<string> discount) {
@@ -46,7 +42,9 @@ int solution(vector<string> want, vector<int> number, vector<string> discount) {
     }
     
     // 회원 등록 가능한지 체크
-    answer += check(end, end.size());
+    if(check(end)) {
+        answer++;
+    }
     
     for (int i = 10; i < discount.size(); i++) {
         int add = m[discount[i]] - 1;
@@ -74,7 +72,10 @@ int solution(vector<string> want, vector<int> number, vector<string> discount) {
             }
         }
         
-        answer += check(end, end.size());
+        // 회원 등록 가능한지 체크
+        if(check(end)) {
+            answer++;
+        }
     }
     
     return answer;
