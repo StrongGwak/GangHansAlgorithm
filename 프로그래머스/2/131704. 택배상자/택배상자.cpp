@@ -6,7 +6,6 @@ using namespace std;
 
 int solution(vector<int> order) {
     int answer = 0;
-    int o = 0;
     stack<int> main;
     stack<int> sub;
     // 기존 컨테이너 벨트 스택에 상자 정보 삽입
@@ -18,19 +17,15 @@ int solution(vector<int> order) {
         // 트럭에 실었는지 여부
         bool flag = false;
         // 기존 컨테이너 벨트 체크
-        if (!main.empty() && o < order.size() 
-           && main.top() == order[o]) {
+        if(!main.empty() && main.top() == order[answer]) {
             main.pop();
             answer++;
-            o++;
             flag = true;
         }
         // 보조 컨테이너 벨트 체크
-        if (!sub.empty() && o < order.size() 
-           && sub.top() == order[o]) {
+        if(!sub.empty() && sub.top() == order[answer]) {
             sub.pop();
             answer++;
-            o++;
             flag = true;
         }
         // 싣지 못했다면 (기존 -> 보조) 상자 이동
