@@ -18,7 +18,7 @@ int solution(vector<int> order) {
         // 트럭에 실었는지 여부
         bool flag = false;
         // 기존 컨테이너 벨트 체크
-        if(!main.empty() && o < order.size() 
+        if (!main.empty() && o < order.size() 
            && main.top() == order[o]) {
             main.pop();
             answer++;
@@ -26,7 +26,7 @@ int solution(vector<int> order) {
             flag = true;
         }
         // 보조 컨테이너 벨트 체크
-        if(!sub.empty() && o < order.size() 
+        if (!sub.empty() && o < order.size() 
            && sub.top() == order[o]) {
             sub.pop();
             answer++;
