@@ -6,18 +6,20 @@ using namespace std;
 
 vector<int> solution(vector<int> progresses, vector<int> speeds) {
     vector<int> answer;
-    int day = ceil((float)(100 - progresses[0]) / speeds[0]);
-    int complete = 1;
-    for (int i = 1; i < progresses.size(); i++) {
+    // 현재 날짜
+    int day = 0;
+    for (int i = 0; i < progresses.size(); i++) {
+        // 개발에 필요한 일정
         int work = ceil((float)(100 - progresses[i]) / speeds[i]);
+        // 필요 일정이 현재 날짜보다 작으면
         if (day >= work) {
-            complete++;
+            // 완료
+            answer.back()++;
         } else {
+            // 현재 날짜로 갱신
             day = work;
-            answer.push_back(complete);
-            complete = 1;
+            answer.push_back(1);
         }
     }
-    answer.push_back(complete);
     return answer;
 }
