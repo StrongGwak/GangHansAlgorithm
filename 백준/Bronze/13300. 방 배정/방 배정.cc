@@ -21,9 +21,15 @@ int main()
                 continue;
             }
             else if (room[i][j] > k) {
-                rooms += room[i][j] / k + 1;
+                if (room[i][j] % k > 0) {
+                    rooms += room[i][j] / k + 1;
+                }
+                else {
+                    rooms += room[i][j] / k;
+                }
+                
             }
-            else {
+            else if (room[i][j] <= k && room[i][j] > 0) {
                 rooms++;
             }
         }
