@@ -31,6 +31,9 @@ std::deque<int> split(std::string input, std::string delimiters) {
 }
 
 int main() {
+	std::ios_base::sync_with_stdio(0);
+	std::cin.tie(0);
+	std::cout.tie(0);
 	int t;
 	std::cin >> t;
 	std::string delimiters = "[,]";
