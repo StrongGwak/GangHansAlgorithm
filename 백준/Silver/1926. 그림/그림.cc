@@ -34,15 +34,11 @@ int main() {
 	cout.tie(0);
 	cin >> n >> m;
 	int result = 0, max = 0;
-
 	for (int i = 0; i < n; i++)
 	{
-		vector<int> tmp;
 		for (int j = 0; j < m; j++)
 		{
-			int num;
-			cin >> num;
-			map[i][j] = num;
+			cin >> map[i][j];
 		}
 	}
 
