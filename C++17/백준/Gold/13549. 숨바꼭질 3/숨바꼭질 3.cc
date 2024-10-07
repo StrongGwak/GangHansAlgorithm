@@ -13,7 +13,7 @@ int main() {
 	
 	std::deque <std::pair<int, int>> q;
 	q.push_front(std::make_pair(N, 0));
-	visited[N] = true;
+	visited[N]++;
 
 	while (!q.empty()) {
 		int current = q.front().first;
