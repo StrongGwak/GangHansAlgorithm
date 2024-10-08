@@ -70,13 +70,6 @@ int main() {
 			}
 		}
 
-		/*for (int i = 0; i < h; i++) {
-			for (int j = 0; j < w; j++) {
-				std::cout << fireMap[i][j] << " ";
-			}
-			std::cout << '\n';
-		}*/
-
 		while (!p.empty()) {
 			int x = p.front().x;
 			int y = p.front().y;
