@@ -10,18 +10,21 @@ int main() {
 	cin.tie(NULL);
 	cin >> T;
 
+	int num = 4;
+
+	dp[1] = 1;
+	dp[2] = 2;
+	dp[3] = 4;
+
 	for (int tc = 0; tc < T; tc++) {
 		cin >> N;
 
-		dp[1] = 1;
-		dp[2] = 2;
-		dp[3] = 4;
-
-		for (int i = 4; i <= N; i++) {
+		for (int i = num; i <= N; i++) {
 			dp[i] = (dp[i - 1] + dp[i - 2] + dp[i - 3]) % 1000000009;
 		}
 
 		cout << dp[N] << '\n';
+		num = max(num, N);
 	}
 	
 }
