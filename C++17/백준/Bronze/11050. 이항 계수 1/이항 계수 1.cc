@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
 int Factorial(int N) {
     if (N <= 1)
         return 1;
@@ -9,19 +11,11 @@ int Factorial(int N) {
         return N * Factorial(N - 1);
 }
 
-void init() {
-    std::ios_base::sync_with_stdio(false);
-    std::cin.tie(nullptr);
-    std::cout.tie(nullptr);
-}
-
 int main() {
-    init();
-
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
     int N, K;
-    std::cin >> N >> K;
+    cin >> N >> K;
 
-    std::cout << Factorial(N) / (Factorial(K) * Factorial(N - K));
-
-    return 0;
+    cout << Factorial(N) / (Factorial(K) * Factorial(N - K));
 }
