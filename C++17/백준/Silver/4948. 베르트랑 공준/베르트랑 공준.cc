@@ -9,7 +9,7 @@ int main() {
     cin.tie(NULL);
 
     for (int i = 2; i <= 250000; i++) {
-        int num = i * 2;
+        int num = i + i;
         while (num <= 250000) {
             if (nums[num] != 1) {
                 nums[num] = 1;
